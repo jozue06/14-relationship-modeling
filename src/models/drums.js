@@ -21,7 +21,7 @@ const schema = new Schema({
     type: String,
     // required: true,
   },
-  drumSet: {type: Schema.Types.ObjectId, ref: 'Drum Set' },
+  drumSet: {type: Schema.Types.ObjectId, ref: 'DrumSet' },
 });
 
 export default mongoose.model('Drums', schema);

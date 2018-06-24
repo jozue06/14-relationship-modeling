@@ -1,4 +1,5 @@
 import supertest from 'supertest';
+import mongoose from 'mongoose';
 import {
   server,
 } from '../../../src/app.js';
@@ -84,7 +85,7 @@ describe('DrumSet', () => {
   it('should populate DrumSet', async () => {
 
     const DrumSetObj = {
-      name: 'Iron Maiden drum set',
+      name: 'Joshs drum set',
     };
 
     const myDrumSet = await DrumSet.create(DrumSetObj);
@@ -101,7 +102,8 @@ describe('DrumSet', () => {
 
     const foundNewDrum = await Drum
       .findById(newDrum._id)
-      .populate('DrumSet')
+      .populate('drum')
+      .populate('cymbal')
       .exec();
     expect(foundNewDrum.drumName).toBe(DrumObj.drumName);
 

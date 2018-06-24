@@ -18,7 +18,7 @@ const schema = new Schema({
     required: true,
     default: 'Bright',
   },
-  drumSet: {type: Schema.Types.ObjectId, ref: 'Drum Set' },
+  drumSet: {type: Schema.Types.ObjectId, ref: 'DrumSet' },
 });
 
-export default mongoose.model('cymbals', schema);
+export default mongoose.model('Cymbals', schema);

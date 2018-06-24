@@ -2,7 +2,7 @@
 
 import express from 'express';
 const router = express.Router();
-import modelFinder from '../middleware/modelSwitch';
+import modelFinder from '../middleware/modelSwitch.js';
 router.param('model', modelFinder);
 
 let sendJSON = (res,data) => {
@@ -23,6 +23,9 @@ router.get('/', (req,res) => {
 
 router.get('/api/v1/:model', (req,res,next) => {
   req.model.find()
+    .populate('drum')
+    .populate('cymbal')
+    .exec()
     .then( data => sendJSON(res,data) )
     .catch( next );
 });
