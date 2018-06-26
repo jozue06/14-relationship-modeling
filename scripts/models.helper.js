@@ -22,18 +22,6 @@ export default {
       console.error(err);
       done();
     });
-    // try {
-    //   await mongoose.disconnect();
-    //   console.log('mongoose disconnected');
-    //   done();
-    // } catch (error) {
-    //   console.log(`
-    //     You did something wrong silly!
-    //     ${error}
-    //   `);
-    //   done();
-    //   throw error;
-    // }
   },
 
   beforeAll: done => {
