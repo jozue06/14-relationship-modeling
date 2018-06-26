@@ -38,6 +38,7 @@ describe('api module', () => {
     const DrumObj = {
       drumName: 'Snare',
       diameter: 8,
+      color: 'zeellll', 
     };
 
     return mockRequest
@@ -61,6 +62,7 @@ describe('api module', () => {
     const DrumObj = {
       drumName: 'Rack Tom',
       diameter: 10,
+      color: 'brown', 
     };
 
     return mockRequest
@@ -86,6 +88,7 @@ describe('DrumSet', () => {
 
     const DrumSetObj = {
       name: 'Joshs drum set',
+      color: 'white',
     };
 
     const myDrumSet = await DrumSet.create(DrumSetObj);
@@ -95,6 +98,7 @@ describe('DrumSet', () => {
     const DrumObj = {
       drumName: 'Floor Tom',
       diameter: 25,
+      color:'white',
       DrumSet: myDrumSet._id,
     };
 
@@ -132,6 +136,7 @@ describe('Drum model', () => {
     let drum = new Drum({
       drumName: 'Pink snare',
       diameter: 14,
+      color: 'pink',
     });
 
     return drum.save().then(snareCur => {
@@ -145,6 +150,7 @@ describe('Drum model', () => {
     const DrumObj = {
       drumName: 'Kick',
       diameter: 22,
+      color: 'red',
     };
 
     return Drum.create(DrumObj).then(drum => {
@@ -171,6 +177,7 @@ describe('Drum model', () => {
     const DrumObj = {
       drumName: 'Barry Manilow Snare',
       diameter: 9,
+      color: 'black',
     };
 
     return Drum.create(DrumObj).then(barrySnare => {
@@ -189,6 +196,7 @@ describe('Drum model', () => {
     const newDrum = {
       drumName: 'Aretha Franklin Kick',
       diameter: 25,
+      color: 'blue',
     };
 
     const drum = await Drum.create(newDrum);
@@ -202,30 +210,6 @@ describe('Drum model', () => {
     expect(Drums.length).toBe(0);
 
   });
-
-//   xit('should delete a Drum - Promise version', () => {
-
-//     return Drum
-//       .create({
-//         drumName: 'Aretha Franklin kick2 ',
-//         diameter: 26,
-//       })
-//       .then(Drum => {
-
-//         return Drum.deleteOne({
-//           _id: Drum._id,
-//         }).then(result => {
-
-//           expect(result.ok).toBe(1);
-
-//           return Drum.find().then(Drums => {
-
-//             expect(Drums.length).toBe(0);
-//           });
-
-//         });
-//       });
-//   });
 
   it('should reject on find when id not found', () => {
 

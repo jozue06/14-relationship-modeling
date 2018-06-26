@@ -8,7 +8,9 @@ export default (dir) => {
     findById: () => Promise.resolve({}),
     save: data => Promise.resolve(data),
     findOneAndDelete: () => Promise.resolve({}),
-    findByIdAndUpdate: () => Promise.resolve([]),
+    findOneAndUpdate: data => {console.log('on the inside!??!'), Promise.resolve(data);},
+    findByIdAndDelete: () => {console.log('on the DELETE inside!??!');},
+    
   };
 
   if (typeof dir !== 'string') {

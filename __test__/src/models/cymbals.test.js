@@ -45,7 +45,4 @@ describe('cymbals tests', () => {
 
   });
 
-
-  // create()
-
 });

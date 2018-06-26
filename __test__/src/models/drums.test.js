@@ -35,6 +35,7 @@ describe('drums tests', () => {
     let drum = new Drums({
       drumName : 'Snare',
       diameter : 14,
+      color:  'green',
 
     });
 

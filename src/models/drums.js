@@ -19,7 +19,7 @@ const schema = new Schema({
   },
   color: {
     type: String,
-    // required: true,
+    required: true,
   },
   drumSet: {type: Schema.Types.ObjectId, ref: 'DrumSet' },
 });

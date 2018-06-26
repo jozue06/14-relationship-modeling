@@ -37,34 +37,37 @@ router.get('/api/v1/:model/:id', (req,res,next) => {
 });
 
 router.post('/api/v1/:model', (req,res,next) => {
-  console.log('!!!!!!!!POST!!!!!!!!!!!');
   let record = new req.model(req.body);
-  console.log('!!!!!!!!what a REQ.BODY!!!!!!!!!!!  ', req.body);
   record.save()
     .then( data => {
-      console.log('!!!!!! INSIDE THE THEN!!!!!!!!');
       sendJSON(res,data) ;
     })
     .catch( err => {
-      console.log('!!!!!! ERRROR???!!!!!!     ', err);
       next();});
 });
 
-router.put('/api/v1/:model/:id', (req,res,next) => {
-  if(!req.model.id){return err;}
-  let record = new req.model(req.body);
-  record.findOneAndUpdate()
-    .then( data => sendJSON(res,data) )
-    .catch( next );
+router.put('/api/v1/:model/:id', (req, res, next) => {
+  if(Object.keys(req.body).length) {
+    req.model.findByIdAndUpdate(req.params.id, req.body, {new:true})
+      .then(data => sendJSON(res, data))
+      .catch(next);
+  }
+  else {
+    return err;
+  }
 });
 
 router.delete('/api/v1/:model/:id', (req,res,next) => {
   console.log('hit delete route');
-  if(!req.model.id){return err;}
-  let record = new req.model(req.body);
-  record.findOneAndDelete(req.body.id)
-    .then( data => sendJSON(res,data) )
-    .catch( next );
+  if(Object.keys(req.params.id)) {
+    console.log('hit delete route2');
+    req.model.findByIdAndDelete(req.params.id, req.body)
+      .then(data => sendJSON(res, data))
+      .catch(next);
+  }
+  else {
+    return err;
+  }
 });
 
 
