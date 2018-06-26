@@ -12,3 +12,4 @@
  - [x] create `GET`, `POST`, `PUT`, and `DELETE` routes for your newly added resource
  - [x]   test your application to ensure that it meets the standard criteria of a working **full CRUD** REST API
  - [x]   use `populate` in the `get()` route logic your  `/api/new-resource-name/:id` route to populate the associated property used to house related resources **(ex: `List.findById(req.params.id).populate('notes')`)**
+
